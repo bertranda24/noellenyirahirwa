@@ -1,0 +1,21 @@
+<?php
+if(isset($_POST['submit'])){
+$dbconn=mysqli_connect("mysql-btech","root","","CAT1")or die(mysqli_connect_error()); // connect to database
+
+// inserting in Database
+$name=$_POST['fname'];
+$regno=$_POST['email'];
+$pas=$_POST['passw'];
+
+$sql="INSERT INTO user_registration SET names='$name',  email='$regno', password='$pas'";
+$quer =mysqli_query($dbconn,$sql);
+header("location:index.php");
+} ?>
+<!DOCTYPE html> <html> <head> 	<title> Form to Register</title>
+</head>  <body>  <table> <form action="" method="POST">
+<tr><td>First Name</td><td><input type="text" name="fname" ></td></tr>
+<tr><td>Email</td><td><input type="text" name="email"></td></tr>
+<tr><td>Password</td><td><input type="pass" name="passw"></td></tr>
+<tr><td><input type="submit" name="submit"></td>
+<td><a  href="index.php">View</a></td></tr>
+</form> </table></body> </html>
